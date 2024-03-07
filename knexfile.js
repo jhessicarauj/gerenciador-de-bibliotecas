@@ -1,47 +1,24 @@
-// Update with your config settings.
+const path = require("path")
 
-/**
- * @type { Object.<string, import("knex").Knex.Config> }
- */
 module.exports = {
 
   development: {
-    client: 'sqlite3',
+    client: 'mysql2',
     connection: {
-      filename: './dev.sqlite3'
-    }
-  },
-
-  staging: {
-    client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
-    },
-    pool: {
-      min: 2,
-      max: 10
+      host: 'localhost',
+      user: 'root',
+      password: '',
+      database: 'biblioteca_knex'
     },
     migrations: {
-      tableName: 'knex_migrations'
-    }
+      directory: path.resolve(
+        __dirname,
+        'src',
+        'database',
+        'knex',
+        'migrations'
+      )
+    },
+    useNullAsDefault: true,
   },
-
-  production: {
-    client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'knex_migrations'
-    }
-  }
-
-};
+}
