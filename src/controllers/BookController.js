@@ -60,3 +60,5 @@ class BookController {
         return res.status(200).json("Registro deletado com sucesso!")
     }
 }
+
+module.exports = BookController

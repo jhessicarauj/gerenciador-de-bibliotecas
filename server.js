@@ -1,9 +1,8 @@
 const express = require('express')
-const {v4:uuidV4} = require('uuid')
 
 const app = express()
 
-app.use(express.json())
+/* app.use(express.json())
 
 const users = [];
 const books = [];
@@ -142,7 +141,7 @@ app.get("/books/consulta", (req, res) => {
     }
 
     return res.status(200).json(result)
-})
+}) */
 
 
 
