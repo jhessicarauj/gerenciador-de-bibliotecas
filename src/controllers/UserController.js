@@ -13,14 +13,14 @@ class UserController {
     }
 
     async listUsers(req, res) {
-        const users = await knex ("users")
+        const users = await knex("users")
 
         return res.status(200).json(users)
     }
 
     async listUsersByld(req, res) {
         const {user_id} = req.params
-        const user = await kenx ("users").where({id:user_id})
+        const user = await knex("users").where({id:user_id})
 
         return res.status(200).json(user)
     }
@@ -29,7 +29,7 @@ class UserController {
         const {user_id} = req.params
         const {name, email} = req.body
 
-        await kenx ("users").where({id:user_id}).update({name, email})
+        await knex("users").where({id:user_id}).update({name, email})
 
         return res.status(200).json("Usuario cadastrado com sucesso!")
     }
@@ -37,7 +37,7 @@ class UserController {
     async updateUserAdmin(req, res) {
         const {user_id} = req.params
 
-        await kenx("users").where({id:user_id}).update({isAdmin:true})
+        await knex("users").where({id:user_id}).update({isAdmin:true})
         return res.status(200).json("Usuario agora e um administrador!")
     }
 

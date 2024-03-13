@@ -6,7 +6,6 @@ class BookController {
         const {titulo , autor, categoria} = req.body
 
         const book = {
-            id,
             titulo,
             autor,
             categoria,
@@ -15,7 +14,7 @@ class BookController {
             disponibilidade: true
         }
 
-        await knex ("books").insert({titulo: book.titulo, autor: book.autor, categoria: book.categoria })
+        await knex("books").insert({titulo: book.titulo, autor: book.autor, categoria: book.categoria, disponibilidade: book.disponibilidade})
         return res.status(201).json("Livro criado com sucesso")
     }
 
@@ -38,7 +37,7 @@ class BookController {
         const {id} = req.params
         const {titulo, categoria} = req.body
 
-        const newTask = await knex ("books").where({id}).update({titulo, categoria})
+        const newTask = await knex("books").where({id}).update({titulo, categoria})
 
         return res.status(200).json("Registro atualizado com sucesso!")
     }

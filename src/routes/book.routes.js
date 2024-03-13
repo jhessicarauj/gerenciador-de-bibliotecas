@@ -7,7 +7,7 @@ const checkUserExists = require("../middlewares/CheckUserExists")
 const bookRoutes = Router()
 const bookController = new BookController()
 
-bookRoutes.post("/books/:user_id", checkUserExists, bookController.createBook)
+bookRoutes.post("/books", checkUserExists, bookController.createBook)
 
 bookRoutes.get("/books", bookController.listbook)
 bookRoutes.get("/books/:id", checkBookExists, bookController.listBookByld)
