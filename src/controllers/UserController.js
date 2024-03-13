@@ -1,5 +1,5 @@
-const { __esModule } = require("uuid")
 const knex = require("../database/knex")
+
 class UserController {
     async createUser(req, res) {
         const {name, username, email, telefone} = req.body
@@ -8,10 +8,11 @@ class UserController {
             username,
             email,
             telefone,
+            password,
             isAdmin: false
         }
 
-        await knex("users").insert({name, username, email, telefone, isAdmin})
+        await knex("users").insert({name, username, email, telefone, password, isAdmin})
 
         return res.status(201).json("Usuario cadastrado com sucesso!!")
     }
