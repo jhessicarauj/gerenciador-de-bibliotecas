@@ -2,15 +2,10 @@ const knex = require("../database/knex")
 
 class UserController {
     async createUser(req, res) {
-        const {name, username, email, telefone} = req.body
-        const isAdmin = {
-            name,
-            username,
-            email,
-            telefone,
-            password,
-            isAdmin: false
-        }
+        const {name, username, email, telefone, password} = req.body
+        
+            const isAdmin = false
+
 
         await knex("users").insert({name, username, email, telefone, password, isAdmin})
 

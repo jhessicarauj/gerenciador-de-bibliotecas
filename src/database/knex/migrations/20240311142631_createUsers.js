@@ -6,7 +6,7 @@ exports.up = (knex) => { return knex.schema.createTable("users", (table) => {
     table.string("email").notNullable(); 
     table.string("telefone").notNullable(); 
     table.string("password").notNullable();
-    table.booleans("isAdmin").defautTo("false") 
+    table.boolean("isAdmin").defaultTo("false") 
 
 }) 
   

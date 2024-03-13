@@ -3,7 +3,7 @@ exports.up = (knex) => { return knex.schema.createTable("books", (table) => {
     table.string("titulo").notNullable();
     table.string("autor").notNullable();
     table.string("categoria").notNullable();
-    table.booleans("disponibilidade").defautTo("true")
+    table.boolean("disponibilidade").defaultTo("true")
 })
   
 };
