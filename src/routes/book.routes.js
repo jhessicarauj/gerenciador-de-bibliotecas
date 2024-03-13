@@ -12,10 +12,10 @@ bookRoutes.post("/books/:user_id", checkUserExists, bookController.createBook)
 bookRoutes.get("/books", bookController.listbook)
 bookRoutes.get("/books/:id", checkBookExists, bookController.listBookByld)
 
-bookRoutes.put("/books/:id", checkBookExists, bookController.updateTask)
+bookRoutes.put("/books/:id", checkBookExists, bookController.updateBook)
 
 bookRoutes.patch("/books/:id", checkBookExists, bookController.updateBookStatus)
 
-bookRoutes.deleteBook("/books/:id", checkBookExists, bookController.deleteBook)
+bookRoutes.delete("/books/:id", checkBookExists, bookController.deleteBook)
 
 module.exports = bookRoutes

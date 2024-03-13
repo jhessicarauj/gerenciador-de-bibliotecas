@@ -1,3 +1,4 @@
+const {Router} = require("express")
 const UserController = require("../controllers/UserController")
 const checkUserExists = require("../middlewares/CheckUserExists")
 

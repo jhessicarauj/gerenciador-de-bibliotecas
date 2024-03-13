@@ -34,7 +34,7 @@ class BookController {
 
     }
 
-    async updateTask(req, res) {
+    async updateBook(req, res) {
         const {id} = req.params
         const {titulo, categoria} = req.body
 
@@ -54,7 +54,7 @@ class BookController {
 
     async deleteBook (req, res) {
         const {id} = req.params
-        await knex("books").where({id}).delete({id})
+        await knex("books").where({id}).delete()
 
         return res.status(200).json("Registro deletado com sucesso!")
     }
