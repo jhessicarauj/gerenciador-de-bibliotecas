@@ -16,6 +16,6 @@ bookRoutes.put("/books/:id", checkBookExists, bookController.updateTask)
 
 bookRoutes.patch("/books/:id", checkBookExists, bookController.updateBookStatus)
 
-bookController.deleteBook("/books/:id", checkBookExists, bookController.deleteBook)
+bookRoutes.deleteBook("/books/:id", checkBookExists, bookController.deleteBook)
 
 module.exports = bookRoutes
