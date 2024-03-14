@@ -2,17 +2,16 @@ const {Router} = require("express")
 const BookController = require("../controllers/BookController")
 
 const checkBookExists = require("../middlewares/CheckBookExists")
-const checkUserExists = require("../middlewares/CheckUserExists")
 
 const bookRoutes = Router()
 const bookController = new BookController()
 
-bookRoutes.post("/:user_id", checkUserExists, bookController.createBook)
+bookRoutes.post("/books", bookController.createBook)
 
-bookRoutes.get("/", bookController.listbook)
-bookRoutes.get("/:id", checkBookExists, bookController.listBookByld)
+bookRoutes.get("/books", bookController.listbook)
+bookRoutes.get("/books/:id", checkBookExists, bookController.listBookByld)
 
-bookRoutes.put("/:id", checkBookExists, bookController.updateBook)
+bookRoutes.put("/books/:id", checkBookExists, bookController.updateBook)
 
 bookRoutes.patch("/books/:id", checkBookExists, bookController.updateBookStatus)
 

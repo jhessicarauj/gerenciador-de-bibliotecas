@@ -31,7 +31,7 @@ class UserController {
 
         await knex("users").where({id:user_id}).update({name, email})
 
-        return res.status(200).json("Usuario cadastrado com sucesso!")
+        return res.status(200).json("Usuario atualizado com sucesso!")
     }
 
     async updateUserAdmin(req, res) {
