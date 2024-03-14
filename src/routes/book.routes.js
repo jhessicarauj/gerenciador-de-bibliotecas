@@ -6,14 +6,14 @@ const checkBookExists = require("../middlewares/CheckBookExists")
 const bookRoutes = Router()
 const bookController = new BookController()
 
-bookRoutes.post("/books", bookController.createBook)
+bookRoutes.post("/", bookController.createBook)
 
-bookRoutes.get("/books", bookController.listbook)
-bookRoutes.get("/books/:id", checkBookExists, bookController.listBookByld)
+bookRoutes.get("/", bookController.listbook)
+bookRoutes.get("/:id", checkBookExists, bookController.listBookByld)
 
-bookRoutes.put("/books/:id", checkBookExists, bookController.updateBook)
+bookRoutes.put("/:id", checkBookExists, bookController.updateBook)
 
-bookRoutes.patch("/books/:id", checkBookExists, bookController.updateBookStatus)
+bookRoutes.patch("/:id", checkBookExists, bookController.updateBookStatus)
 
 bookRoutes.delete("/:id", checkBookExists, bookController.deleteBook)
 
