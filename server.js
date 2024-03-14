@@ -8,7 +8,7 @@ app.use(routes)
 const PORT = 3333
 
 app.use((err, req, res, next) => {
-    console.arror(err.stack);
+    console.error(err.stack);
     res.status(500).send("Algo deu errado!")
 })
 
