@@ -16,7 +16,7 @@ class BookController {
     }
 
     async listbook(req, res) {
-        const [books] = await knex("books")
+        const books = await knex("books")
 
         return res.status(200).json(books)
 

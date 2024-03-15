@@ -1,11 +1,10 @@
-const {Router} = require('express')
-const LoansController = require('../controllers/LoansController')
+const {Router} = require("express")
+const LoansController = require("../controllers/LoansController")
 
 const loansRoutes = Router()
-
 const loansController = new LoansController()
 
-loansRoutes.post("/:book_id/:user_id", loansController.borrowBooks)
+loansRoutes.post("/:user_id/:book_id", loansController.borrowBooks)
 
 loansRoutes.get("/:user_id", loansController.listBorrowedBooks)
 

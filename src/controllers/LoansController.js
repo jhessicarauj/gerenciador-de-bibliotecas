@@ -26,7 +26,10 @@ class LoansController {
     async listBorrowedBooks(req, res) {
         const {user_id} = req.params
 
-        const loans = await knex("loans").where({user_id}).innerJoin('books', 'books.id', 'loans.book_id').select('books.titulo', 'book.autor', 'books.paginas')
+        const loans = await knex("loans")
+        .where({user_id})
+        .innerJoin('books', 'books.id', 'loans.book_id').
+        select('books.titulo', 'books.autor', 'books.categoria')
 
         return res.status(200).json(loans)
     }
