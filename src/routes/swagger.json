@@ -1,0 +1,94 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Swagger Library Manager - OpenAPI 3.0",
+        "description": "Esta é a documentação da API para gerenciamento de uma biblioteca",
+        "contact": {
+            "email": "apiteam@swagger.io"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3333"
+        }
+    ],
+    "tags": [
+        {
+            "name": "books",
+            "description": "Gerenciamento dos livros da biblioteca"
+          },
+          {
+            "name": "loans",
+            "description": "Realize empréstimos e devoluções dos livros"
+          },
+          {
+            "name": "users",
+            "description": "Operações a respeito do usuário"
+          }
+    ],
+    "paths": {
+        "/users": {
+            "post": {
+                "tags": ["users"],
+                "summary": "Cria um novo usuário",
+                "description": "Cria um novo usuário passando suas informações básicas",
+                "requestBody": {
+                    "content": {
+                        "apllication/json": {
+                            "schema": {
+                                "$ref": "#components/schemas/User"
+                            },
+                            "examples": {
+                                "user": {
+                                    "value": {
+                                        "name": "Wagner",
+                                        "email": "wagner@mail.com",
+                                        "telefone": "41 9999-9999"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Usuário já cadastrado" 
+                    },
+                    "200": {
+                        "description": "Usuário criado com sucesso!",
+                        "content": {
+                            "apllication/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    
+    "components": {
+        "schemas": {
+            "User": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "telefone": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

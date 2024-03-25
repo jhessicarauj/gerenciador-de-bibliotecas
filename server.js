@@ -1,18 +1,32 @@
-const express = require("express")
-const routes = require ("./src/routes")
-const app = express()
+require("express-async-errors");
+const cors = require("cors")
+const express = require("express");
+const routes = require ("./src/routes");
 
-app.use(express.json())
-app.use(routes)
+const AppError = require("./src/utils/AppError");
 
-const PORT = 3333
+const app = express();
+
+
+app.use(express.json());
+app.use(cors());
+
+app.use(routes);
+
+
 
 app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send("Algo deu errado!")
-})
+    if (err instanceof AppError) {
+        return response.status(err.statusCode).json({status: "error", message: err.message,});
+    }
 
+    console.error(err);
 
-app.listen(PORT,() =>{
-    console.log(`servidor rodando na porta ${PORT}`);
-})
+    return response.status(500).json({
+        status: "error",
+        message:"Internal server error",
+    });
+});
+
+const PORT = 3333;
+app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
